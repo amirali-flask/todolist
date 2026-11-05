@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block header %}
+<title>login| todolist</title>
+{% endblock %}
+
+{% block body %}
+
+<h1>ورود/ثبت نام</h1>
+
+{% with messages = get_flashed_messages() %}
+
+{% if messages %}
+{% for message in messages %}
+<span>{{message}}</span>
+{% endfor %}
+{% endif %}
+
+{% endwith %}
+
+
+<div class="main_flex_box">
+    <section class="form-box">
+        <h2>ورود</h2>
+
+        <form action="{{url_for('login_blueprint.do_login')}}" method="POST">
+            <div class="input-group">
+                <label for="loginun">username:</label><input type="text" placeholder="amir"  name="username"
+                    id="loginun">
+            </div>
+            <div class="input-group">
+                <label for="loginpw">password:</label><input type="password" placeholder="*********" name="password"
+                    id="loginpw">
+            </div>
+            <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+            <input type="submit" value="ورود">
+        </form>
+
+    </section>
+
+    <section class="form-box">
+        <h2>ثبت نام</h2>
+
+        <form action="{{url_for('login_blueprint.register')}}" method="POST">
+            <div class="input-group">
+                <label for="regun">username:</label><input type="text" placeholder=" amir" name="username" id="regun">
+            </div>
+            <div class="input-group">
+                <label for="regpw">password:</label><input type="password" placeholder="**********" name="password" id="regpw">
+            </div>
+            <div class="input-group">
+                <label for="regpw2">password2:</label><input type="password" placeholder="*********" name="password2" id="regpw2">
+            </div>
+            <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+            <input type="submit" value="ثبت نام">
+        </form>
+    </section>
+</div>
+{% endblock %}

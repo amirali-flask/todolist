@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block header %}
+<title>todo list</title>
+{% endblock %}
+
+{% block body %}
+
+<h1>welcome to todo list </h1>
+<div class="main_flex_box">
+    <section class="users_list">
+        <h2>top 3 users</h2>
+        <ul>
+
+            {% for user in top_users %}
+                <li><span>{{user.user_name}}</span> <span>{{user.tasks_count}} </span> <span style="float: right;">{{user.contact.city}}</span></li>
+            {% endfor %}
+            
+        </ul>
+    </section>
+
+    <section class="users_list">
+        <h2>new 3 users</h2>
+        <ul>
+
+            {% for user in new_users %}
+                <li><span>{{user.user_name}}</span> <span>{{user.tasks_count}} </span> <span style="float: right;">{{user.contact.city}}</span></li>
+            {% endfor %}
+            
+        </ul>
+    </section>
+</div>
+
+
+{% endblock %}
